@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crime Rate Predictor</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Crime Rate Predictor</h1>
+    <p>Safety Is Your <i>First</i> Priority</p>
+  </header>
+
+  <main>
+    <form>
+      <div class="form-group">
+        <label for="city">Selected State Name:</label>
+        <select id="city">
+          <option>Andhra Pradesh</option>
+          <option>Arunachal Pradesh</option>
+          <option>Assam</option>
+          <option>Bihar</option>
+          <option>Chhattisgarh</option>
+          <option>Goa</option>
+          <option>Gujarat</option>
+          <option>Haryana</option>
+          <option>Himachal Pradesh</option>
+          <option>Jharkhand</option>
+          <option>Karnataka</option>
+          <option>Kerala</option>
+          <option>Madhya Pradesh</option>
+          <option>Maharashtra</option>
+          <option>Manipur</option>
+          <option>Meghalaya</option>
+          <option>Mizoram</option>
+          <option>Nagaland</option>
+          <option>Odisha</option>
+          <option>Punjab</option>
+          <option>Rajasthan</option>
+          <option>Sikkim</option>
+          <option>Tamil Nadu</option>
+          <option>Telangana</option>
+          <option>Tripura</option>
+          <option>Uttar Pradesh</option>
+          <option>Uttarakhand</option>
+          <option>West Bengal</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="crime-type">Selected Crime Type:</label>
+        <select id="crime-type">
+          <option selected>Kidnapping</option>
+          <option>Theft</option>
+          <option>Murder</option>
+          <option>Cyber Crime</option>
+          <option>Robbery</option>
+	  <option>Rape</option>
+          <option>Suicide</option>
+          <option>Dowry</option>
+
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="year">Selected Year:</label>
+        <select id="year">
+          <!-- Generate years dynamically -->
+          <script>
+            for (let year = 2000; year <= 2024; year++) {
+              document.write(`<option ${year === 2007 ? 'selected' : ''}>${year}</option>`);
+            }
+          </script>
+        </select>
+      </div>
+      <div class="prediction">
+        <h2>Prediction:</h2>
+        <p><strong id="crime-area">High Crime Area</strong></p>
+        <p>Estimated Crime Rate: <span id="crime-rate">9.9012691060762</span></p>
+        <p>Estimated Number of Cases: <span id="num-cases">808</span></p>
+        <p>Population (in Lakhs): <span id="population">81.6</span></p>
+      </div>
+      <button type="submit" onclick="generatePrediction()">Let's Check Again</button>
+    </form>
+  </main>
+
+  <footer>
+    <p>Developed By: <strong>Fabled Four</strong></p>
+    <div class="social-links">
+      <a href="#" target="_blank">LinkedIn</a>
+      <a href="#" target="_blank">GitHub</a>
+    </div>
+  </footer>
+
+  <script>
+    function generatePrediction() {
+      const city = document.getElementById('city').value;
+      const crimeType = document.getElementById('crime-type').value;
+      const year = parseInt(document.getElementById('year').value);
+
+      // Example prediction logic - Replace this with your model logic
+      const crimeRate = (Math.random() * 10).toFixed(2); // Random crime rate between 0 and 10
+      const numCases = Math.floor(Math.random() * 1000); // Random cases between 0 and 1000
+      const population = (50 + Math.random() * 50).toFixed(1); // Random population between 50 and 100 lakhs
+
+      // Update predictions in the HTML
+      document.getElementById('crime-area').innerText =
+        crimeRate > 7 ? 'High Crime Area' : 'Low Crime Area';
+      document.getElementById('crime-rate').innerText = crimeRate;
+      document.getElementById('num-cases').innerText = numCases;
+      document.getElementById('population').innerText = population;
+
+      // Prevent default form submission
+      event.preventDefault();
+    }
+  </script>
+</body>
+</html>
